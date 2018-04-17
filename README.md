@@ -1,0 +1,1 @@
+# snap-usbmode-switch
