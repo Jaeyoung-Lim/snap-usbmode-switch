@@ -1,17 +1,21 @@
-name: usbmode-switch # you probably want to 'snapcraft register <name>'
-version: '0.1' # just for humans, typically '1.2+git' or '1.3.2'
+name: usbmode-switch
+version: '0.1' 
 summary: usb-modeswitch packaged as snap
 description: |
   usb-modeSwitch is (surprise!) a mode switching tool for controlling 'multi-mode' USB devices.
 
-grade: devel # must be 'stable' to release into candidate/stable channels
-confinement: devmode # use 'strict' once you have the right plugs and slots
+grade: devel 
+confinement: devmode 
 
 parts:
-  usb-modeswitch: # See 'snapcraft plugins'
-    plugin: dump
+  usb-modeswitch:
+    plugin: make
     source: http://www.draisberghof.de/usb_modeswitch/usb-modeswitch-2.5.2.tar.bz2
+  usb-modeswitch-data:
+    plugin: make
+    source: http://www.draisberghof.de/usb_modeswitch/usb-modeswitch-data-20170806.tar.bz2
 
 apps:
-  conf_modem_huaweii:
-    command: usb_modeswitch -v 12d1 -p 1f01 -M '55534243123456780000000000000a11062000000000000100000000000000'
+  conf-huaweii:
+    command: |
+      usb_modeswitch -v 12d1 -p 1f01 -M '55534243123456780000000000000a11062000000000000100000000000000'
