@@ -31,6 +31,6 @@ apps:
 slots:
   huaweii-modem:
     interface: serial-port
-    path: /dev/serial-port-huaweii
+    path: /dev/serial-port-huaweii-modem
     usb-vendor: 12d1
     usb-product: 1f01
