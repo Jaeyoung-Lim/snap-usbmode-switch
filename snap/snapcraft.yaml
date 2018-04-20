@@ -4,8 +4,8 @@ summary: usb-modeswitch packaged as snap
 description: |
   usb-modeSwitch is (surprise!) a mode switching tool for controlling 'multi-mode' USB devices.
 
-grade: devel 
-confinement: devmode 
+grade: stable
+confinement: strict
 
 parts:
   usb-modeswitch:
