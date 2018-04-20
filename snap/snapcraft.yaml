@@ -25,3 +25,11 @@ parts:
 apps:
   conf-huaweii:
     command: usb_modeswitch -v 12d1 -p 1f01 -M '55534243123456780000000000000a11062000000000000100000000000000'
+
+
+slots:
+  huaweii-modem:
+    interface: serial-port
+    path: /dev/serial-port-huaweii
+    usb-vendor: 12d1
+    usb-product: 1f01
