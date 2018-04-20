@@ -4,18 +4,33 @@ summary: usb-modeswitch packaged as snap
 description: |
   usb-modeSwitch is (surprise!) a mode switching tool for controlling 'multi-mode' USB devices.
 
-grade: devel 
-confinement: devmode 
+grade: stable
+confinement: strict
 
 parts:
   usb-modeswitch:
     plugin: make
     source: http://www.draisberghof.de/usb_modeswitch/usb-modeswitch-2.5.2.tar.bz2
+    stage-packages:
+      - libusb-1.0-0
+      - libusb-1.0-0-dev
+
   usb-modeswitch-data:
     plugin: make
     source: http://www.draisberghof.de/usb_modeswitch/usb-modeswitch-data-20170806.tar.bz2
+    stage-packages:
+      - libusb-1.0-0
+      - libusb-1.0-0-dev
 
 apps:
   conf-huaweii:
-    command: |
-      usb_modeswitch -v 12d1 -p 1f01 -M '55534243123456780000000000000a11062000000000000100000000000000'
+    command: usb_modeswitch -v 12d1 -p 1f01 -M '55534243123456780000000000000a11062000000000000100000000000000'
+    plugs: [huaweii-modem]
+
+
+slots:
+  huaweii-modem:
+    interface: serial-port
+    path: /dev/serial-port-huaweii
+    usb-vendor: 12d1
+    usb-product: 1f01
