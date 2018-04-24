@@ -27,15 +27,21 @@ parts:
       - pkg-config
 
 apps:
-  usb_modeswitch: # Default program
+  usb-modeswitch: # Default program
     command: usb_modeswitch
 
   conf-huaweii: # Configures the Huaweii E3372 / E8372 LTE modem from storage mode to modem mode
-    daemon: fork
+    daemon: simple
     command: usb_modeswitch -v 12d1 -p 1f01 -M '55534243123456780000000000000a11062000000000000100000000000000'
-    # plugs: [huaweii-modem]
+    plugs: [huaweii-modem]
+
+
+plugs:
+  huaweii-modem:
+    interface: serial-port
 
 # To Do: Strict confinement should be obtained
+# This is how we want to use the slot in the gadget snap
 # slots:
 #   huaweii-modem:
 #     interface: serial-port
