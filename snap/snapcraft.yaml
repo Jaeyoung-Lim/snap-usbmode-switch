@@ -14,6 +14,8 @@ parts:
     stage-packages:
       - libusb-1.0-0
       - libusb-1.0-0-dev
+    build-packages:
+      - pkg-config
 
   usb-modeswitch-data:
     plugin: make
@@ -21,6 +23,10 @@ parts:
     stage-packages:
       - libusb-1.0-0
       - libusb-1.0-0-dev
+    build-packages:
+      - pkg-config
+
+
 
 apps:
   conf-huaweii:
