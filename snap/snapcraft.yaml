@@ -1,5 +1,5 @@
 name: usbmode-switch
-version: '0.1' 
+version: '0.2' 
 summary: usb-modeswitch packaged as snap
 description: |
   usb-modeSwitch is (surprise!) a mode switching tool for controlling 'multi-mode' USB devices.
