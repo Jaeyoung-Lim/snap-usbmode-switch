@@ -13,7 +13,7 @@ parts:
     source: http://www.draisberghof.de/usb_modeswitch/usb-modeswitch-2.5.2.tar.bz2
     stage-packages:
       - libusb-1.0-0
-      - libusb-1.0-0-dev
+      # - libusb-1.0-0-dev
     build-packages:
       - pkg-config
 
@@ -22,7 +22,7 @@ parts:
     source: http://www.draisberghof.de/usb_modeswitch/usb-modeswitch-data-20170806.tar.bz2
     stage-packages:
       - libusb-1.0-0
-      - libusb-1.0-0-dev
+      # - libusb-1.0-0-dev
     build-packages:
       - pkg-config
 
@@ -34,6 +34,7 @@ apps:
   conf-huaweii: # Configures the Huaweii E3372 / E8372 LTE modem from storage mode to modem mode
     daemon: simple
     restart-condition: on-failure
+    stop-timeout: 3m
     command: usb_modeswitch -v 12d1 -p 1f01 -M '55534243123456780000000000000a11062000000000000100000000000000'
     plugs: [huaweii-modem, network-control, raw-usb]
 
