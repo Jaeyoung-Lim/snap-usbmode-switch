@@ -1,5 +1,5 @@
 name: usbmode-switch
-version: '0.1' 
+version: '0.2' 
 summary: usb-modeswitch packaged as snap
 description: |
   usb-modeSwitch is (surprise!) a mode switching tool for controlling 'multi-mode' USB devices.
@@ -29,11 +29,13 @@ parts:
 apps:
   usb-modeswitch: # Default program
     command: usb_modeswitch
+    plugs: [network-control, raw-usb]
 
   conf-huaweii: # Configures the Huaweii E3372 / E8372 LTE modem from storage mode to modem mode
     daemon: simple
+    restart-condition: always
     command: usb_modeswitch -v 12d1 -p 1f01 -M '55534243123456780000000000000a11062000000000000100000000000000'
-    plugs: [huaweii-modem]
+    plugs: [huaweii-modem, network-control, raw-usb]
 
 
 plugs:
